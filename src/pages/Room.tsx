@@ -1,4 +1,6 @@
 import logoImg from "../assets/images/logo.svg";
+import menuImg from '../assets/images/menu.svg';
+import cancelImg from '../assets/images/cancel-menu.svg';
 
 import { RoomCode } from "../components/RoomCode";
 
@@ -10,7 +12,6 @@ import { useParams } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
-import { useEffect } from "react";
 import { Question } from "../components/Question";
 import { useRoom } from "../hooks/useRoom";
 
@@ -23,6 +24,7 @@ export function Room() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const [newQuestion, setNewQuestion] = useState("");
+  const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
 
   const { title, questions } = useRoom(roomId);
 
@@ -72,7 +74,24 @@ export function Room() {
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
+
+          <div className="menus">
+            <div className="menu-fullscreen">
+              <RoomCode code={roomId} />
+            </div>
+
+            <div className="menu-mobile">
+              <img 
+                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                src={isMenuOpen ? cancelImg : menuImg}  
+                alt="menu" 
+              />
+              <div className={isMenuOpen ? 'menu-opened' : 'menu-closed'}>
+                <RoomCode code={roomId} />
+              </div>
+            </div>
+            
+          </div>
         </div>
       </header>
 

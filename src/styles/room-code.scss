@@ -19,6 +19,10 @@
     align-items: center;
 
     height: 100%;
+
+    > img {
+      max-width: 20px;
+    }
   }
       
   span {

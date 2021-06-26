@@ -5,16 +5,18 @@ import logoImg from "../assets/images/logo.svg";
 import deleteImg from "../assets/images/delete.svg";
 import checkImg from "../assets/images/check.svg";
 import answerImg from "../assets/images/answer.svg";
+import menuImg from '../assets/images/menu.svg';
+import cancelImg from '../assets/images/cancel-menu.svg';
 
 import { RoomCode } from "../components/RoomCode";
 import { Button } from "../components/Button";
 import { Question } from "../components/Question";
 import { useRoom } from "../hooks/useRoom";
+import { database } from "../services/firebase";
 
 // import { useAuth } from "../hooks/useAuth";
 
 import "../styles/room.scss";
-import { database } from "../services/firebase";
 
 type RoomParams = {
   id: string;
@@ -27,6 +29,8 @@ export function AdminRoom() {
   const history = useHistory();
 
   const { title, questions } = useRoom(roomId);
+
+  const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -59,11 +63,26 @@ export function AdminRoom() {
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <div>
-            <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
-            </Button>
+          <div className="menus">
+            <div className="menu-fullscreen">
+              <RoomCode code={roomId} />
+              <Button isOutlined onClick={handleEndRoom}>
+                Encerrar sala
+              </Button>
+            </div>
+            <div className="menu-mobile">
+              <img 
+                onClick={() => {setIsMenuOpen(!isMenuOpen)}} 
+                src={isMenuOpen ? cancelImg : menuImg}  
+                alt="menu" 
+              />
+              <div className={isMenuOpen ? 'menu-opened' : 'menu-closed'}>
+                <RoomCode code={roomId} />
+                <Button isOutlined onClick={handleEndRoom}>
+                  Encerrar sala
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </header>

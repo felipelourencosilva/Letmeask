@@ -14,9 +14,56 @@
         max-height: 45px;
       }
 
-      > div {
-        display: flex;
-        gap: 16px;
+      .menus {
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+        
+        .menu-fullscreen {
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        .menu-mobile {
+          display: none;
+
+          
+          img {
+            width: 32px;
+            cursor: pointer;
+          }
+
+          .menu-closed{
+            display: none;
+          }
+
+          .menu-opened{
+            position: absolute;
+            right: 20px;
+            top: 70px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            padding: 5px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 5px 5px 10px rgba( 0, 0, 0, 0.1);
+            transition: 2s;
+
+            > img {
+              max-height: 45px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            display: flex;
+          }
+        }
 
         button {
           height: 40px;
@@ -30,7 +77,7 @@
     margin: 0 auto;
 
     .room-title {
-      margin: 32px 0 24px;
+      margin: 32px 0px 24px;
       display: flex;
       align-items: center;
 
@@ -107,6 +154,10 @@
 
     .question-list {
       margin-top: 32px;
+    }
+
+    @media (max-width: 850px) {
+      margin: 0 20px ;
     }
   }
 }
