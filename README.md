@@ -54,10 +54,10 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
   - [x] Responsividade
 
 <p>
-  <img alt="Letmeask" src=".github/letmeask-entrar-na-sala.png" width="160px">
-  <img alt="Letmeask" src=".github/letmeask-criar-sala.png" width="160px">
-  <img alt="Letmeask" src=".github/letmeask-room.png" width="160px">
-  <img alt="Letmeask" src=".github/letmeask-admin-room.png" width="160px">
+  <img alt="Letmeask" src=".github/letmeask-entrar-na-sala.png" width="190px">
+  <img alt="Letmeask" src=".github/letmeask-criar-sala.png" width="190px">
+  <img alt="Letmeask" src=".github/letmeask-room.png" width="190px">
+  <img alt="Letmeask" src=".github/letmeask-admin-room.png" width="190px">
 </p>
 
   - [x] Menu
