@@ -2,12 +2,23 @@
   display: flex;
   align-items: stretch;
   height: 100vh;
+  transition: 0.1s;
+  &.dark{
+    background: var(--dark-background);
+    color: var(--white);
+    transition: 0.1s;
+
+    .main-content form input {
+      background: var(--light-black);
+      color: var(--light-gray);
+    }
+  }
 
   aside {
     width: 52%;
 
-    background: #835afd;
-    color: #fff;
+    background: var(--purple);
+    color: var(--white);
 
     display: flex;
     flex-direction: column;
@@ -29,7 +40,7 @@
       font-size: 24px;
       line-height: 32px;
       margin-top: 16px;
-      color: #f8f8f8;
+      color: var(--background);
     }
 
     @media (max-width: 768px) {
@@ -55,6 +66,33 @@
     align-items: stretch;
     text-align: center;
 
+    .changeThemeButton{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: linear-gradient(-45deg, var(--pink), var(--purple));
+      border: none;
+      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      img {
+        width: 25px;
+        height: 25px;
+      }
+
+      &:hover{ 
+        transform: translateY(-2px);
+      }
+    }
+    
     > img {
       align-self: center;
     }
@@ -70,8 +108,13 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #fff;
-        border: 1px solid #a8a8b3;
+        background: var(--white);
+        border: 1px solid var(--medium-gray);
+
+        &:focus {
+          outline: none;
+          border: 1px solid var(--purple);
+        }
       }
 
       button {
@@ -85,11 +128,11 @@
 
     p {
       font-size: 14px;
-      color: #737380;
+      color: var(--dark-gray);
       margin-top: 16px;
 
       a {
-        color: #e559f9;
+        color: var(--pink);
       }
     }
   }
@@ -100,7 +143,7 @@
     border-radius: 8px;
     font-weight: 500;
     background: #ea4335;
-    color: #fff;
+    color: var(--white);
 
     display: flex;
     justify-content: center;
@@ -121,7 +164,7 @@
 
   .separator { 
     font-size: 14px;
-    color: #a8a8b3;
+    color: var(--medium-gray);
 
     margin: 32px 0;
     display: flex;
@@ -131,7 +174,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--medium-gray);
       margin-right: 16px;
     }
 
@@ -139,7 +182,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: #a8a8b3;
+      background: var(--medium-gray);
       margin-left: 16px;
     }
   }

@@ -1,5 +1,25 @@
 .question {
-  background: #fefefe;
+  &.dark{
+    background: var(--light-black);
+
+    p{
+      color: var(--white);
+    }
+
+    &.highlighted{
+      background: var(--dark-background);
+      footer .user-info span {
+        color: var(--medium-gray);
+      }
+    }
+
+    &.answered {
+      background: rgba(27, 27, 36, 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  background: var(--details);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba( 0, 0, 0, 0.04);
   padding: 24px;
@@ -9,20 +29,20 @@
   }
   
   &.highlighted {
-    border: 1px solid #835afd;
-    background: #f4f0ff;
+    border: 1px solid var(--purple);
+    background: var(--highlighted);
     
     footer .user-info span {
-      color: #29292e;
+      color: var(--black);
     }
   }
   
   &.answered {
-    background: #DBDCDD;
+    background: var(--light-gray);
   }
 
   p {
-    color: #29292e;
+    color: var(--black);
   }
 
   footer {
@@ -43,7 +63,7 @@
 
         span {
           margin-left: 8px;
-          color: #737380;
+          color: var(--dark-gray);
           font-size: 14px;
         }
     }
@@ -63,13 +83,13 @@
       &.like-button {
         display: flex;
         align-items: flex-end;
-        color: #737380;
+        color: var(--dark-gray);
 
         &.liked {
-          color: #835afd;
+          color: var(--purple);
 
           svg path{
-            stroke: #835afd;
+            stroke: var(--purple);
           }
         }
 

@@ -6,17 +6,22 @@ import { firebase, auth, database } from '../services/firebase'
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
+import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg'
+import moonImg from '../assets/images/moon.svg'
+import sunImg from '../assets/images/sun.svg'
 
 import { Button } from '../components/Button'
 
 import '../styles/auth.scss'
+import { useTheme } from '../hooks/useTheme';
 
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
   const [ roomCode, setRoomCode ] = useState('');
+  const { theme, toggleTheme } = useTheme()
 
   async function handleCreateRoom() {
     if(!user) {
@@ -49,7 +54,7 @@ export function Home() {
   }
 
   return(
-    <div id="page-auth">
+    <div id="page-auth" className={theme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;E ao-vivo</strong>
@@ -57,7 +62,12 @@ export function Home() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <button 
+            className="changeThemeButton"
+            onClick={toggleTheme}>
+              <img src={theme === 'light' ? moonImg : sunImg} alt="" />
+          </button>
+          <img src={theme === 'light' ? logoImg : darkModeLogoImg} alt="Letmeask" />
           <button 
             className="create-room"
             onClick={handleCreateRoom}

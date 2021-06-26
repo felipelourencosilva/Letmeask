@@ -1,6 +1,9 @@
 import logoImg from "../assets/images/logo.svg";
 import menuImg from '../assets/images/menu.svg';
 import cancelImg from '../assets/images/cancel-menu.svg';
+import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
+import moonImg from '../assets/images/moon.svg'
+import sunImg from '../assets/images/sun.svg'
 
 import { RoomCode } from "../components/RoomCode";
 
@@ -8,25 +11,28 @@ import { Button } from "../components/Button";
 
 import "../styles/room.scss";
 
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { database } from "../services/firebase";
 import { Question } from "../components/Question";
 import { useRoom } from "../hooks/useRoom";
+import { useTheme } from "../hooks/useTheme";
+import { useEffect } from "react";
 
 type RoomParams = {
   id: string;
 };
 
 export function Room() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
+  const history = useHistory();
   const [newQuestion, setNewQuestion] = useState("");
   const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
-
   const { title, questions } = useRoom(roomId);
+  const { theme, toggleTheme } = useTheme()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -70,17 +76,27 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={theme === 'light' ? logoImg : darkModeLogoImg} alt="Letmeask" />
 
           <div className="menus">
             <div className="menu-fullscreen">
               <RoomCode code={roomId} />
+              <button 
+                className="changeThemeButton"
+                onClick={toggleTheme}>
+                  <img src={theme === 'light' ? moonImg : sunImg} alt="" />
+              </button>
             </div>
 
             <div className="menu-mobile">
+                <button 
+                  className="changeThemeButton"
+                  onClick={toggleTheme}>
+                    <img src={theme === 'light' ? moonImg : sunImg} alt="" />
+                </button>
               <img 
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
                 src={isMenuOpen ? cancelImg : menuImg}  
@@ -116,7 +132,7 @@ export function Room() {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login.</button>
+                Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login.</button>
               </span>
             )}
             <Button type="submit" disabled={!user}>

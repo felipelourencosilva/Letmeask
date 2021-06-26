@@ -7,6 +7,9 @@ import checkImg from "../assets/images/check.svg";
 import answerImg from "../assets/images/answer.svg";
 import menuImg from '../assets/images/menu.svg';
 import cancelImg from '../assets/images/cancel-menu.svg';
+import darkModeLogoImg from '../assets/images/dark-mode-logo.svg';
+import moonImg from '../assets/images/moon.svg'
+import sunImg from '../assets/images/sun.svg'
 
 import { RoomCode } from "../components/RoomCode";
 import { Button } from "../components/Button";
@@ -17,6 +20,7 @@ import { database } from "../services/firebase";
 // import { useAuth } from "../hooks/useAuth";
 
 import "../styles/room.scss";
+import { useTheme } from "../hooks/useTheme";
 
 type RoomParams = {
   id: string;
@@ -31,6 +35,8 @@ export function AdminRoom() {
   const { title, questions } = useRoom(roomId);
 
   const [ isMenuOpen, setIsMenuOpen ] = useState<boolean>(false);
+
+  const { theme, toggleTheme } = useTheme();
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -59,18 +65,31 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+        <img src={theme === 'light' ? logoImg : darkModeLogoImg} alt="Letmeask" />
+
           <div className="menus">
+
             <div className="menu-fullscreen">
               <RoomCode code={roomId} />
               <Button isOutlined onClick={handleEndRoom}>
                 Encerrar sala
               </Button>
+              <button 
+                className="changeThemeButton"
+                onClick={toggleTheme}>
+                  <img src={theme === 'light' ? moonImg : sunImg} alt="" />
+              </button>
             </div>
+
             <div className="menu-mobile">
+              <button 
+                className="changeThemeButton"
+                onClick={toggleTheme}>
+                  <img src={theme === 'light' ? moonImg : sunImg} alt="" />
+              </button>
               <img 
                 onClick={() => {setIsMenuOpen(!isMenuOpen)}} 
                 src={isMenuOpen ? cancelImg : menuImg}  
@@ -83,6 +102,7 @@ export function AdminRoom() {
                 </Button>
               </div>
             </div>
+
           </div>
         </div>
       </header>
