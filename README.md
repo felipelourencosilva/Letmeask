@@ -8,13 +8,11 @@
     <img alt="Letmeask" src=".github/Capa.png" />
 </h1>
 
-<br>
+<p align="center">
+  🟣<strong>Letmeask</strong> é um aplicativo para conectar criadores de conteúdo ao seu público, através de um sistema de criação de salas de <strong>Q&A</strong>🟣
+</p>
 
-<h1 align="center"> 
-   ☄
-    Tecnologias 
-   ☄
-</h1>
+<br>
 
 <p align="center"> Esse projeto foi desenvolvido com as seguintes tecnologias: </p>
 
@@ -53,22 +51,25 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
   - [x] Temas Light e Dark
   - [x] Responsividade
 
-<p>
+<p align="center">
   <img alt="Letmeask" src=".github/letmeask-entrar-na-sala.png" width="190px">
   <img alt="Letmeask" src=".github/letmeask-criar-sala.png" width="190px">
   <img alt="Letmeask" src=".github/letmeask-room.png" width="190px">
   <img alt="Letmeask" src=".github/letmeask-admin-room.png" width="190px">
 </p>
 
+<h2 align="center">
+  <img alt="Letmeask" src=".github/video letmeask.gif" width="775px">
+</h2>
+
   - [x] Menu
 
-<p>
-  <img alt="Letmeask" src=".github/menu.png" width="160px">
+<p align="center">
+  <img alt="Letmeask" src=".github/menu.png" width="190px" >
 </p>
 
-## 💻 Projeto
+##
 
-Letmeask é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
-
-Este é um projeto desenvolvido durante a **[Next Level Week Together](https://nextlevelweek.com/)**, apresentada dos dias 20 a 27 de Junho de 2021.
-
+<p align="center">
+  Projeto desenvolvido durante a  <strong>Next Level Week Together.</strong> 💜
+</p>
