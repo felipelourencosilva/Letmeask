@@ -9,7 +9,7 @@
 </h1>
 
 <p align="center">
-  🟣<strong>Letmeask</strong> é um aplicativo para conectar criadores de conteúdo ao seu público, através de um sistema de criação de salas de <strong>Q&A</strong>🟣
+  🟣<strong>Letmeask</strong> é um aplicativo para conectar criadores de conteúdo ao seu público, através de um sistema de criação de salas de <strong>Q&A</strong>
 </p>
 
 <br>
