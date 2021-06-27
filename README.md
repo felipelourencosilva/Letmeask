@@ -71,5 +71,5 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
 ##
 
 <p align="center">
-  Projeto desenvolvido durante a  <strong>Next Level Week Together.</strong> 💜
+  Feito com 💜 por Felipe, desenvolvido durante a  <strong>Next Level Week Together.</strong> 
 </p>
